@@ -11,6 +11,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 
 import java.sql.Timestamp;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -74,4 +75,8 @@ public class User {
     @Size(max = 250)
     @Basic(optional = false)
     private String displayName;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private Set<UserMeta> userMetaSet;
 }
